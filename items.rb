@@ -13,15 +13,15 @@ def items
   return [
     {
       :source => "~/Dropbox/Airtype/dotfiles/emacs/.emacs.d",
-      :target => "~/Desktop/emacs.d"
+      :target => "~/emacs.d"
     },
     {
       :source => "~/Dropbox/Airtype/dotfiles/emacs/.emacs",
-      :target => "~/Desktop/emacs"
+      :target => "~/emacs"
     },
     {
       :source => "~/Dropbox/Airtype/todo.org",
-      :target => "~/Desktop/todo.haha"
+      :target => "~/todo.org"
     }
   ]
 end

@@ -1,7 +1,5 @@
 #!/usr/bin/env ruby
 
-# ROVER
-
 class Rover
 
 
@@ -11,7 +9,7 @@ class Rover
   # array must contain two keys, `:source` and `:target`, which name
   # the files to link/copy/etc.
   def self.items_file
-    File.expand_path("~/.config/Rover/items.rb")
+    File.expand_path("./items.rb")
   end
 
 
