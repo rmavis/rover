@@ -8,16 +8,16 @@ class Rover
   # that returns an array that contains hashes. Each hash in that
   # array must contain two keys, `:source` and `:target`, which name
   # the files to link/copy/etc.
-  def self.items_file
+  def items_file
     File.expand_path("./items.rb")
   end
 
 
 
   def initialize
-    items = self.get_items(Rover.items_file)
+    items = self.get_items(self.items_file)
 
-    if (items.size == 0)
+    if (items.nil? || (items.size == 0))
       puts "Nothing to do."
     else
       self.check_items(items)
@@ -28,14 +28,25 @@ class Rover
 
   # get_items receives the name of the items file and checks if that
   # file exists. If it does, its contents are read and the `items`
-  # are returned. Else, an empty array.
+  # are returned. Else, nil.
   def get_items(items_file = '')
     if File.file?(items_file)
       require(items_file)
-      return items
+
+      begin
+        if items.is_a?(Array)
+          return items
+        else
+          puts "Error: `items` is not an array."
+        end
+      rescue
+        puts "Error: the items file didn't contain an `items` function."
+      end
+    else
+      puts "Error: the items file doesn't exist."
     end
 
-    return [ ]
+    return nil
   end
 
 
